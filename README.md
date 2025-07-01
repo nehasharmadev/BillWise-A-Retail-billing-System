@@ -1,7 +1,7 @@
-🧾 BillWise — Smart Billing & Inventory Management System
+🧾 **BillWise — Smart Billing & Inventory Management System**
 BillWise is a full-stack billing and inventory management application built with Spring Boot (backend) and Angular (frontend). It provides a secure, role-based platform for managing orders, generating invoices, and tracking daily sales — with advanced features like JWT authentication, Razorpay integration, and scheduled email reports.
 
-🚀 Features
+🚀 **Features**
 🔐 JWT Authentication with Refresh Token logic
 
 👤 Role-Based Access: Admins can create and manage users
@@ -20,22 +20,24 @@ BillWise is a full-stack billing and inventory management application built with
 
 🌐 RESTful APIs for clean separation between frontend & backend
 
-🛠️ Tech Stack
-Frontend: Angular
+🛠️ **Tech Stack**
+**Frontend:** Angular
 
-Backend: Spring Boot (Java)
+**Backend:** Spring Boot (Java)
 
-Database: H2 / MySQL
+**Database:** MySQL
 
-Security: Spring Security, JWT
+**Security:** Spring Security, JWT
 
-Payments: Razorpay API
+**Payments:** Razorpay API
 
-Emailing: Spring Mail (JavaMailSender)
+**Emailing:** Spring Mail (JavaMailSender)
 
-Scheduling: Spring Scheduler (@Scheduled)
+**Scheduling:** Spring Scheduler (@Scheduled)
 
-Build Tools: Maven, Angular CLI
+**Build Tools:** Maven, Angular CLI
 
 <img width="942" alt="Img1" src="https://github.com/user-attachments/assets/36234506-a141-493b-be03-d2fe6349a9e3" />
+
+
 
