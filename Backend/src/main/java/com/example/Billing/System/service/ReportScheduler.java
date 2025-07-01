@@ -37,8 +37,8 @@ public class ReportScheduler {
     @Transactional
     public void sendDailyReports() throws Exception {
         List<Subscriber> subscribers = subscriberRepository.findAll();
-        List<OrderResponse> orders = orderService.getTodayOrders(); // Fetch all orders
-        File report = mailUtil.generateSalesReport(orders); // Same method as above
+        List<OrderResponse> orders = orderService.getTodayOrders(); 
+        File report = mailUtil.generateSalesReport(orders);
 
         for (Subscriber sub : subscribers) {
             try {
