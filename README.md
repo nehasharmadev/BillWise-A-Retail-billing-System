@@ -1,4 +1,4 @@
-# 🧾 BillWise — Smart Billing & Inventory Management System
+# 🧾 BillWise — Retail Billing & Inventory Management System
 
 BillWise is a full-stack billing and inventory management application built with **Spring Boot (backend)** and **Angular (frontend)**.  
 It provides a secure, role-based platform for managing orders, generating invoices, and tracking daily sales — with advanced features like **JWT authentication**, **Razorpay integration**, and **scheduled email reports**.
