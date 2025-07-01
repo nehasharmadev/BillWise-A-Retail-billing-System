@@ -1,0 +1,17 @@
+.nav-link {
+  cursor: pointer;
+}
+.active{
+  /* font-weight: bold; */
+  color: gray;
+  /* text-decoration: underline !important; */
+}
+
+.nav-link:hover {
+  color: gray;
+  cursor: pointer;
+}
+
+.red{
+  color: red;
+}

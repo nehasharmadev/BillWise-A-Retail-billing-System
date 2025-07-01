@@ -1,0 +1,81 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-7">
+      <!-- Left Section: Categories -->
+      <div class="mb-4">
+        <h5>Categories</h5>
+        <div class="d-flex flex-wrap">
+          <button *ngFor="let category of categories" 
+                  class="btn btn-outline-primary me-2" 
+                  (click)="selectCategory(category)">
+            {{ category }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Left Section: Items -->
+      <div>
+        <h5>Items in {{ selectedCategory }}</h5>
+        <ul class="list-group">
+  <ng-container *ngFor="let item of items">
+    <li *ngIf="item.categoryName === selectedCategory" 
+        class="list-group-item d-flex justify-content-between align-items-center">
+      {{ item.name }} - Rs {{ item.price }}
+      <button class="btn btn-sm btn-success" (click)="addItem(item)">Add</button>
+    </li>
+  </ng-container>
+</ul>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <!-- Right Section: Order Summary -->
+      <h5>Order Summary</h5>
+      <div class="mb-3">
+        <label for="customerName" class="form-label">Customer Name</label>
+        <input type="text" id="customerName" class="form-control" [(ngModel)]="customerName" required>
+      </div>
+      <div class="mb-3">
+        <label for="mobileNumber" class="form-label">Mobile Number</label>
+        <input type="text" id="mobileNumber" class="form-control" [(ngModel)]="mobileNumber" required>
+      </div>
+
+      <h6>Added Items</h6>
+      <ul class="list-group mb-3">
+        <li *ngFor="let item of selectedItems" 
+            class="list-group-item d-flex justify-content-between align-items-center">
+          {{ item.name }} -Rs {{ item.price }}
+          <small>Qt: {{item.quantity}}</small>
+          <button class="btn btn-sm btn-danger" (click)="removeItem(item)">Remove</button>
+        </li>
+      </ul>
+
+      <h6>Total Price: Rs {{ calculateSubtotal()}}</h6>
+      <h6>Tax (1%): Rs {{ (calculateTax())}}</h6>
+      <h6>Final Price after tax: Rs {{calculateTotal()}}</h6>
+
+      <div class="mb-3">
+        <button class="btn btn-primary me-2" (click)="selectedPaymentMethod = 'CASH'">Cash</button>
+        <button class="btn btn-secondary" (click)="selectedPaymentMethod = 'UPI'">UPI</button>
+      </div>
+      <button class="btn btn-success" (click)="placeOrder()">Place Order</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showInvoice" class="modal" style="display: block; background: rgba(0,0,0,0.5)">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Order Invoice</h5>
+        <button type="button" class="btn-close" (click)="closeInvoice()"></button>
+      </div>
+      <div class="modal-body">
+        <app-invoice 
+          [order]="currentOrder" 
+          [invoiceNumber]="invoiceNumber">
+        </app-invoice>
+      </div>
+    </div>
+  </div>
+</div>

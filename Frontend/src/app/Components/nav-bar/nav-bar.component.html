@@ -1,0 +1,19 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">BillWise</a>
+
+    <div class="d-flex gap-4">
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a class="nav-link" routerLink="/explore" routerLinkActive="active">Explore</a>
+      <!-- <a class="nav-link" routerLink="/orderhistory" routerLinkActive="active">Order History</a> -->
+       <ng-container *ngIf="userRole === 'ADMIN'">
+        <a class="nav-link" routerLink="/manage-items" routerLinkActive="active">Manage Items</a>
+      <a class="nav-link" routerLink="/manage-categories" routerLinkActive="active">Manage Categories</a>
+      <a class="nav-link" routerLink="/manage-users" routerLinkActive="active">Manage Users</a>
+       </ng-container>
+      
+      <a class="nav-link red" (click)="logout()" >Logout</a> 
+
+    </div>
+  </div>
+</nav>

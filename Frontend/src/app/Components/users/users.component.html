@@ -1,0 +1,98 @@
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Registration Form (Left Side) -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h4>Register New User</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name">
+              <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" 
+                   class="text-danger">
+                Name is required
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+              <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" 
+                   class="text-danger">
+                Valid email is required
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+              <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" 
+                   class="text-danger">
+                Password must be at least 6 characters
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <select class="form-select" id="role" formControlName="role">
+                <option value="USER">User</option>
+                <option value="ADMIN">Admin</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+              Register
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- User List with Search (Right Side) -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-info text-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <h4>Existing Users</h4>
+            <div class="w-50">
+              <input type="text" class="form-control" placeholder="Search users..." 
+                     [(ngModel)]="searchTerm" (input)="filterUsers()">
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of filteredUsers; let i = index">
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.role }}</td>
+                  <td>
+                    <!-- <button class="btn btn-sm btn-warning me-2" (click)="editUser(user)">
+                      Edit
+                    </button> -->
+                    <button class="btn btn-sm btn-danger" (click)="deleteUser(user.userId,i)">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="invoice-container" id="invoice-content">
+  <div class="text-center mb-4">
+    <h2>INVOICE</h2>
+    <p>Invoice #: {{invoiceNumber}}</p>
+    <p>Date: {{currentDate}}</p>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <h5>Bill To:</h5>
+      <p>{{order.customerName}}</p>
+      <p>{{order.phoneNumber}}</p>
+    </div>
+    <div class="col-md-6 text-end">
+      <h5>Payment Method:</h5>
+      <p>{{order.paymentMethod}}</p>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of order.items">
+        <td>{{item.name}}</td>
+        <td>Rs {{item.price }}</td>
+        <td>{{item.quantity}}</td>
+        <!-- <td>${{(item.price * item.quantity) }}</td> -->
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="text-end">Subtotal:</td>
+        <td>${{order.subtotal }}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="text-end">Tax (1%):</td>
+        <td>${{order.tax }}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="text-end"><strong>Grand Total:</strong></td>
+        <td><strong>${{order.grandTotal }}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="text-center mt-4">
+    <p>Thank you for shopping!</p>
+  </div>
+</div>
+
+<div class="text-center mt-3 no-print">
+  <button class="btn btn-primary" (click)="printInvoice()">Print Invoice</button>
+</div>
